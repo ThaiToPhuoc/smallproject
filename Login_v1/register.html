@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Tô Phước Thái</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+    <script language="javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+    
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+                    <img id="avatar_img" src="images/img-01.png" alt="IMG" style="height: 300px; width: auto;">
+				</div>
+                
+				<form action="php/upload.php" method="POST" enctype="multipart/form-data">
+					<span class="login100-form-title">
+						Register
+					</span>
+
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="username" id="username" placeholder="Username">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="pass" id="pass" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input" data-validate = "Re-Password is required">
+						<input class="input100" type="password" name="repass" id="repass" placeholder="Re-Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="email" id="email" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+                    </div>
+
+					<!-- Phần xử lý upload file-->
+                    <div class="wrap-input100 validate-input">
+                        <label for="file">avatar: </label>
+                    	<input id="file" type="file" name="avatar" required=""/>
+                    </div>
+					<!-- Phần xử lý upload file-->
+					<div class="container-login100-form-btn">
+						<input type="button" name="login-btn" class="login100-form-btn" id="register" value="Register">
+					</div>
+                </form>
+            </div>
+            
+        </div>
+        
+	</div>
+	
+	<script language="javascript">
+		//Hiển thị avatar
+		function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			
+			reader.onload = function(e) {
+			$('#avatar_img').attr('src', e.target.result);
+			}
+			
+			reader.readAsDataURL(input.files[0]); // convert to base64 string
+		}
+		}
+
+		$("#file").change(function() {
+		readURL(this);
+		});
+		
+		$('#register').click(function ()
+		{
+            var username = $('#username').val();
+            var pass = $('#pass').val();
+            var repass = $('#repass').val();
+            var email = $('#email').val();
+            
+            // Kiểm tra dữ liệu có null hay không
+            if ($.trim(username) == ''){
+                alert('Bạn chưa nhập tên đăng nhập');
+                return false;
+            }
+
+            if ($.trim(pass) == ''){
+                alert('Bạn chưa nhập password');
+                return false;
+            }
+
+            if ($.trim(repass) == ''){
+                alert('Bạn chưa nhập lại mật khẩu');
+                return false;
+            }
+        
+            if ($.trim(email) == ''){
+                alert('Bạn chưa nhập email');
+                return false;
+            }
+
+            if($.trim(pass) != $.trim(repass))
+            {
+                alert('nhập lại mật khẩu phải đúng!');
+				return false;
+            }
+
+			var file_data = $('#file').prop('files')[0];
+			//lấy ra kiểu file
+			var type = file_data.type;
+			//Xét kiểu file được upload
+			var match = ["image/gif", "image/png", "image/jpg","image/jpeg",];
+			
+			if (type == match[0] || type == match[1] || type == match[2]|| type == match[3]) {
+				//khởi tạo đối tượng form data
+				var form_data = new FormData();
+				//thêm files vào trong form data
+				form_data.append('username',username);
+				form_data.append('pass',pass);
+				form_data.append('email',email);
+				form_data.append('file', file_data);
+			}
+			else{
+				alert('Đề nghị nhập đúng định dạng file ảnh: gif, png, jpg, jpeg!');
+				return false;
+			}
+
+			$.ajax({
+                url: 'php/register.php',
+                type: 'post',
+				cache: false,
+                contentType: false,
+                processData: false,
+                dataType: 'text',
+                data: form_data,
+                success: function(result)
+                {
+					if(result == 'success')
+					{
+						alert('Đăng ký thành công!');
+						window.location.assign('index.html');
+					}
+                }
+            });
+ 
+		});
+   </script>
+
+<!--===============================================================================================-->	
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+
+	
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>
