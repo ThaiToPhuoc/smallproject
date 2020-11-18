@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>User</title>
+	<script language="javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">       
+	<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">    
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<link href="css/user.css" rel="stylesheet">
+	<link href="css/admin.css" rel="stylesheet">
+
+</head>
+<body>
+	<script language="javascript" src="js/include.js"></script>
+	<!-- navigation/header -->
+	<header>
+		<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+			<div class="container-fluid">
+				<a id="permission" class="navbar-branch" href="">
+					<img id="avatar" src="#">
+				</a>
+				<div class="nav-item" id="info">
+					<p id="username"></p>
+				</div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+		
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="User.html">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="admin.html">About</a>
+						</li>
+						<li class="nav-item dropdown">
+							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Project
+							  </button>
+							  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item text-primary" href="#">Basic</a>
+								<a class="dropdown-item text-primary" href="#">MySQL</a>
+								<a class="dropdown-item text-primary" href="#">OOP</a>
+							  </div>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">Logout <span class="fa fa-sign-out"></span></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- navigation/header -->
+	<div class="frame">
+		<img id="admin_logo" src="images/okami.jpg" alt="admin">
+		<p id="name">Tô Phước Thái</p>
+		<p id="job">Web Developer & Front-end Expert</p>
+	</div>
+	<div class="container-fluid padding">
+		<div class="row text-center padding">
+			<div class="col-xs-12 col-sm-6 col-md-4 ">
+				<i class="fab fa-react"></i>	
+				<h3>REACT</h3>
+				<p>Build the latest version of React</p>					
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4">
+				<i class="fab fa-angular"></i>			
+				<h3>Angular</h3>
+				<p>Build your Website and Front-end Application</p>
+			</div>
+			<div class="col-sm-12 col-md-4">
+				<i class="fab fa-css3"></i>			
+				<h3>CSS3 , HTML5</h3>
+				<p>Customize your web UI with Html5 and Css3</p>
+			</div>
+		</div>	
+		<hr class="my-4">	
+	</div>
+
+	<!-- footer -->
+	<footer></footer>
+	<!-- footer -->
+	<script language="javascript" src="js/user.js"></script>
+</body>
+</html>

@@ -30,6 +30,10 @@
     color: white !important;
   }
 
+  .navbar li .dropdown-item{
+    color: black !important;
+  }
+
   .navbar li a:hover {
     color: black !important;
   }
@@ -112,6 +116,7 @@
     border-top:1px solid #d5d5d5;
     width: 100%;
   }
+
   /*Media Quert*/
   @media (max-width: 992px)
   {

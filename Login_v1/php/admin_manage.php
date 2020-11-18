@@ -1,20 +1,19 @@
 <?php
-    $username = $_POST['username'];
     $conn = mysqli_connect('localhost', 'root', '', 'test') or die ('Can not connect!');
-    $query = mysqli_query($conn, "SELECT * FROM account WHERE username = '$username'");
+    $query = mysqli_query($conn, 'SELECT * FROM account');
 
-    if(mysqli_num_rows($query) > 0)
+    $result = array();
+    if (mysqli_num_rows($query) > 0)
     {
         while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)){
             $result[] = array(
                 'id' => $row['id'],
                 'username' => $row['username'],
-                'avatar' => $row['avatar'],
+                'pass' => $row['password'],
                 'email' => $row['email'],
-                'admin' => $row['admin'],
-                'pass' => $row['password']
+                'avatar' => $row['avatar']
             );
         }
     }
-    die(json_encode($result));
+    echo json_encode($result);
 ?>
