@@ -1,0 +1,4 @@
+khoa hoc,001,AI,Thai,1
+khoa hoc,002,AI,Thai,12
+van hoc,003,AI,Thai,12
+van hoc,004,truyện kiều,thai,12

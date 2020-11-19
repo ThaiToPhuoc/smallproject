@@ -3,6 +3,9 @@ if(sessionStorage.getItem("username"))
 {
     var username = sessionStorage.getItem("username");
     $('#username').text(username);
+    $('.basic').attr('href','project/PHP_basic.php');
+    $('.mysql').attr('href','project/mysql.php');
+    $('.oop').attr('href','project/oop.php');
     $.ajax({
         url: 'php/user.php',
         type: 'post',
@@ -21,16 +24,22 @@ if(sessionStorage.getItem("username"))
                 }
                 else
                 {
-                    $('#username').html(username);
+                    $('#username').html(username + '</br>(user)');
                     $('#permission').attr('href','edit.html');
                 }
             });
         }
     });
+
+
 }
 
 else
 {
-    alert('Bạn phải đăng nhập trước!');
-    window.location.assign('index.html');
+    $('#username').html('Đăng nhập');
+    $('#permission').attr('href','index.html');
+    $('.dropdown-item').click(function(){
+        alert('Đề nghị đăng nhập trước!');
+        window.location.assign('index.html');
+    });
 }

@@ -1,3 +1,8 @@
+$('#continue').click(function(){
+	window.sessionStorage;
+	sessionStorage.setItem("username","");
+});
+
 $('#login').click(function ()
 		{
 		

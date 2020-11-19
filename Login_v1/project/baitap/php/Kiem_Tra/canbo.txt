@@ -1,0 +1,7 @@
+SV001, Hoang lan, 1, Nha Trang, CUNHAN, , 3604500
+SV002, Hoàng Lân, 1, Nha Trang, 59th2, CNTT, 100000
+GV001, Hoàng Ngân, 0, Nha Trang, THACSI, 10, 4941000
+GV001, Hoàng Ngân, 0, Nha Trang, THACSI, 10, 4941000
+GV001, Hoàng Ngân, 0, Nha Trang, THACSI, 10, 4941000
+GV001, Hoàng Ngân, 0, Nha Trang, THACSI, 10, 4941000
+GV001, Hoàng Ngân, 0, Nha Trang, THACSI, 10, 4941000
